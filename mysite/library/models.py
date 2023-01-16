@@ -7,6 +7,8 @@ import uuid
 class Genre(models.Model):
     name = models.CharField(verbose_name="Pavadinimas", max_length=200, help_text='Įveskite knygos žanrą (pvz. detektyvas)')
 
+    def __str__(self):
+        return f"{self.name}"
 
 class Book(models.Model):
     title = models.CharField(verbose_name="Pavadinimas", max_length=200)
@@ -15,11 +17,15 @@ class Book(models.Model):
     author = models.ForeignKey(to="Author", on_delete=models.SET_NULL, null=True)
     genre = models.ManyToManyField(to="Genre")
 
+    def __str__(self):
+        return f"{self.title} ({self.author})"
 
 class Author(models.Model):
     first_name = models.CharField(verbose_name='Vardas', max_length=100)
     last_name = models.CharField(verbose_name='Pavardė', max_length=100)
 
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
 
 class BookInstance(models.Model):
     book = models.ForeignKey(to="Book", on_delete=models.CASCADE)
@@ -40,3 +46,6 @@ class BookInstance(models.Model):
         default='a',
         help_text='Statusas',
     )
+
+    def __str__(self):
+        return f"{self.book} - {self.uuid}"
