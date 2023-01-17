@@ -21,6 +21,7 @@ class BookAdmin(admin.ModelAdmin):
 class BookInstanceAdmin(admin.ModelAdmin):
     list_display = ('book', 'status', 'due_back')
     list_filter = ('status', 'due_back')
+    search_fields = ("uuid", "book__title")
 
     fieldsets = (
         ('General', {'fields': ('uuid', 'book')}),
