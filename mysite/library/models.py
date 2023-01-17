@@ -71,5 +71,5 @@ class BookInstance(models.Model):
         return f"{self.book} - {self.uuid}"
 
     class Meta:
-        verbose_name = "Užsakyta prekė"
-        verbose_name_plural = 'Užsakytos prekės'
+        verbose_name = "Knygos egzempliorius"
+        verbose_name_plural = 'Knygų egzemplioriai'
