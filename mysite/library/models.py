@@ -25,6 +25,8 @@ class Book(models.Model):
     def display_genre(self):
         return ', '.join(genre.name for genre in self.genre.all()[:3])
 
+    display_genre.short_description = "Žanras"
+
     def __str__(self):
         return f"{self.title} ({self.author})"
 
