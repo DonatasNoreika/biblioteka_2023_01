@@ -8,4 +8,11 @@
 <p>Pavardė: {{ author.last_name }}</p>
 <hr>
 <p>{{ author.description }}</p>
+<hr>
+<h5>Mes turime šias autoriaus {{ author }} knygas:</h5>
+<ol>
+{% for book in author.books.all %}
+    <li>{{ book.title }}</li>
+{% endfor %}
+</ol>
 {% endblock %}
