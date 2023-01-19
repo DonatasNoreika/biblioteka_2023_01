@@ -6,7 +6,6 @@
 <h1>Autoriai:</h1>
 {% for author in authors %}
 <hr>
-<p>Vardas: {{ author.first_name }}</p>
-<p>Pavardė: {{ author.last_name }}</p>
+<p><a href="{% url 'author' author.id %}">{{ author }}</a></p>
 {% endfor %}
 {% endblock %}
