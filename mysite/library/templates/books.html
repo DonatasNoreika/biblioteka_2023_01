@@ -6,6 +6,6 @@
 <h1>Knygos:</h1>
 {% for book in books %}
 <hr>
-<p><a href="">{{ book }}</a></p>
+<p><a href="{{ book.id }}">{{ book }}</a></p>
 {% endfor %}
 {% endblock %}
