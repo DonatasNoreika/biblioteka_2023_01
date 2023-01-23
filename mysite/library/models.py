@@ -21,6 +21,7 @@ class Book(models.Model):
     isbn = models.CharField(verbose_name="ISBN", max_length=13, help_text='13 Simbolių <a href="https://www.isbn-international.org/content/what-isbn">ISBN kodas</a>')
     author = models.ForeignKey(to="Author", on_delete=models.SET_NULL, null=True, related_name='books')
     genre = models.ManyToManyField(to="Genre")
+    cover = models.ImageField(verbose_name="Viršelis", upload_to="covers", null=True)
 
     def display_genre(self):
         return ', '.join(genre.name for genre in self.genre.all()[:3])
