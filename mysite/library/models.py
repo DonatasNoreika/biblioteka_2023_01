@@ -1,6 +1,7 @@
 from django.db import models
 import uuid
-
+from django.contrib.auth.models import User
+from datetime import date
 
 # Create your models here.
 
@@ -58,6 +59,10 @@ class BookInstance(models.Model):
     book = models.ForeignKey(to="Book", on_delete=models.CASCADE, related_name='instances')
     uuid = models.UUIDField(verbose_name="UUID", default=uuid.uuid4, help_text='Unikalus ID knygos kopijai')
     due_back = models.DateField(verbose_name="Bus prieinama", null=True, blank=True)
+    reader = models.ForeignKey(to=User, verbose_name="Skaitytojas", on_delete=models.SET_NULL, null=True)
+
+    def is_overdue(self):
+        return self.due_back and self.due_back < date.today()
 
     LOAN_STATUS = (
         ('a', 'Administruojama'),
