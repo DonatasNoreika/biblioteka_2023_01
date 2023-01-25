@@ -7,7 +7,7 @@
 <p>Vardas: {{ author.first_name }}</p>
 <p>Pavardė: {{ author.last_name }}</p>
 <hr>
-<p>{{ author.description }}</p>
+<p>{{ author.description | safe }}</p>
 <hr>
 <h5>Mes turime šias autoriaus {{ author }} knygas:</h5>
 <ol>
