@@ -7,7 +7,7 @@
 {% if book.cover %}
   <img src="{{ book.cover.url }}" style="margin-bottom: 20px;" alt="...">
 {% else %}
-  <img src="{% static 'img/no-image.png' %}">
+  <img src="{% static 'img/no-image.png' %}"  style="margin-bottom: 20px; width: 200px" alt="...">
 {% endif %}
 <h1>Knygos aprašymas:</h1>
 <p><b>Pavadinimas:</b> {{ book.title }}</p>
