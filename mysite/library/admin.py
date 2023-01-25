@@ -19,15 +19,15 @@ class BookAdmin(admin.ModelAdmin):
     inlines = [BookInstanceInLine]
 
 class BookInstanceAdmin(admin.ModelAdmin):
-    list_display = ('book', 'status', 'due_back')
+    list_display = ('book', 'status', 'due_back', 'reader')
     list_filter = ('status', 'due_back')
     search_fields = ("uuid", "book__title")
-    list_editable = ('due_back', 'status')
+    list_editable = ('due_back', 'status', 'reader')
 
-    fieldsets = (
-        ('General', {'fields': ('uuid', 'book')}),
-        ('Availability', {'fields': ('status', 'due_back')}),
-    )
+    # fieldsets = (
+    #     ('General', {'fields': ('uuid', 'book')}),
+    #     ('Availability', {'fields': ('status', 'due_back', 'reader')}),
+    # )
 
 admin.site.register(Author, AuthorAdmin)
 admin.site.register(Genre)
