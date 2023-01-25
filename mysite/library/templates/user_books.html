@@ -4,14 +4,14 @@
 
 {% block content %}
  {% load static %}
-    <h1>Knygų sąrašas:</h1></br>
+    <h1>Paimtų knygų sąrašas:</h1></br>
     {% if instances %}
       {% for instance in instances %}
             <hr>
-              <p>{{ instance.book }} ({{ instance.uuid }}) - {{ instance.due_back }}</p>
+              <p class="{% if instance.is_overdue %}text-danger{% endif %}">{{ instance.book }} ({{ instance.uuid }}) - {{ instance.due_back }}</p>
       {% endfor %}
     {% else %}
-      <p>Bibliotekoje knygų nėra.</p>
+      <p>Knygų nepaimta.</p>
     {% endif %}
 <hr>
   <div class="pagination">

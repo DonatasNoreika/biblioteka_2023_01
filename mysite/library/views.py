@@ -62,7 +62,7 @@ def search(request):
     return render(request, 'search.html', context={'books': search_results, 'query': query})
 
 
-class UserBookListView(generic.ListView, LoginRequiredMixin):
+class UserBookInstanceListView(generic.ListView, LoginRequiredMixin):
     model = BookInstance
     paginate_by = 4
     template_name = 'user_books.html'
