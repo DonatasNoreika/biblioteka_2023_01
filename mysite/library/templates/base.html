@@ -43,6 +43,7 @@
       <li class="nav-item"><a class="nav-link" href="{% url 'user_books' %}">Mano knygos</a></li>
       <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Atsijungti</a></li>
       {% else %}
+      <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Registruotis</a></li>
       <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Prisijungti</a></li>
       {% endif %}
       <li>

@@ -4,6 +4,7 @@ from django.views import generic
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.decorators.csrf import csrf_protect
 
 # Create your views here.
 
@@ -70,3 +71,10 @@ class UserBookInstanceListView(generic.ListView, LoginRequiredMixin):
 
     def get_queryset(self):
         return BookInstance.objects.filter(reader=self.request.user)
+
+@csrf_protect
+def register(request):
+    if request.method == "POST":
+        pass
+    else:
+        return render(request, 'registration/register.html')
