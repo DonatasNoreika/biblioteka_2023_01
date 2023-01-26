@@ -6,8 +6,8 @@
 <div class="container register">
     <h1>Registracija</h1>
     <br/>
-    {% csrf_token %}
     <form method="post">
+        {% csrf_token %}
         <div class="form-group">
             <label for="username">Vartotojo vardas</label>
             <input name="username" type="text" class="form-control" id="username" aria-describedby="usernameHelp">
