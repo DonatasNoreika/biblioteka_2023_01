@@ -54,7 +54,16 @@
     </ul>
   </div>
 </nav>
-<br/>
+<div>
+  {% if messages %}
+      {% for message in messages %}
+          <div class="alert alert-{% if message.tags == 'error' %}danger{% elif message.tags == 'info' %}success{% endif %}" role="alert">
+                  {{ message }}
+          </div>
+      {% endfor %}
+  {% endif %}
+</div>
+    <br/>
     <div class="col-sm-8">
       {% block content %}{% endblock %}
     </div>
