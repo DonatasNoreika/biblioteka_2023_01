@@ -94,3 +94,7 @@ class BookReview(models.Model):
     reviewer = models.ForeignKey(to=User, verbose_name="Vartotojas", on_delete=models.SET_NULL, null=True, blank=True)
     date_created = models.DateTimeField(verbose_name="Laikas", auto_now_add=True)
     content = models.TextField(verbose_name="Atsiliepimas", max_length=3000)
+
+    class Meta:
+        verbose_name = "Atsiliepimas"
+        verbose_name_plural = 'Atsiliepimai'
