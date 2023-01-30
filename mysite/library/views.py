@@ -9,6 +9,8 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.views.generic.edit import FormMixin
 from .forms import BookReviewForm
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 
@@ -119,3 +121,8 @@ def register(request):
             return redirect('register')
     else:
         return render(request, 'registration/register.html')
+
+
+@login_required
+def profilis(request):
+    return render(request, 'profilis.html')
