@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from datetime import date
 from tinymce.models import HTMLField
 
+
 # Create your models here.
 
 class Genre(models.Model):
@@ -99,3 +100,11 @@ class BookReview(models.Model):
         verbose_name = "Atsiliepimas"
         verbose_name_plural = 'Atsiliepimai'
         ordering = ['-date_created']
+
+
+class Profilis(models.Model):
+    user = models.OneToOneField(to=User, on_delete=models.CASCADE)
+    nuotrauka = models.ImageField(default="default.png", upload_to="profile_pics")
+
+    def __str__(self):
+        return f"{self.user.username} profilis"
