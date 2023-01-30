@@ -21,6 +21,8 @@
 {% if book.reviews.all %}
 {% for review in book.reviews.all %}
 <hr>
+<img class="rounded-circle" src="{{review.reviewer.profilis.nuotrauka.url}}">
+<br/>
 <strong>{{ review.reviewer }}</strong>, <em>{{ review.date_created }}</em>
 <p>{{ review.content }}</p>
 {% endfor %}
