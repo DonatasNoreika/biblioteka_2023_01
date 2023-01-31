@@ -88,14 +88,14 @@ def search(request):
     return render(request, 'search.html', context={'books': search_results, 'query': query})
 
 
-class UserBookInstanceListView(generic.ListView, LoginRequiredMixin):
+class UserBookInstanceListView(LoginRequiredMixin, generic.ListView):
     model = BookInstance
     paginate_by = 4
     template_name = 'user_books.html'
     context_object_name = "instances"
 
-    def get_queryset(self):
-        return BookInstance.objects.filter(reader=self.request.user)
+    # def get_queryset(self):
+    #     return BookInstance.objects.filter(reader=self.request.user)
 
 @csrf_protect
 def register(request):
