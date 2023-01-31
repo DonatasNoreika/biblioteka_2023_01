@@ -130,6 +130,17 @@ class UserBookInstanceUpdateView(LoginRequiredMixin, UserPassesTestMixin, generi
         form.save()
         return super().form_valid(form)
 
+
+class UserBookInstanceDeleteView(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
+    model = BookInstance
+    success_url = "/library/userbooks/"
+    template_name = "user_bookinstance_delete.html"
+    context_object_name = "instance"
+
+    def test_func(self):
+        bookinstance = self.get_object()
+        return bookinstance.reader == self.request.user
+
 @csrf_protect
 def register(request):
     if request.method == "POST":
