@@ -188,3 +188,10 @@ def profilis(request):
         'p_form': p_form,
     }
     return render(request, 'profilis.html', context=context)
+
+
+def paimti(request, inst_id):
+    instance = get_object_or_404(BookInstance, pk=inst_id)
+    instance.reader = request.user
+    instance.save()
+    return redirect('user_books')

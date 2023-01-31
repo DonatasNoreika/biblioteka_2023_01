@@ -48,6 +48,7 @@
     <li>{{ instance.uuid }} ({{ instance.due_back }}) -
         <span class="{% if instance.status == 'g' %}text-success{% elif instance.status == 'p' %}text-danger{% else %}text-warning{% endif %}">
         {{ instance.get_status_display }}
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'paimti' instance.id %}">Paimti</a>
       </span>
     </li>
 {% endfor %}
