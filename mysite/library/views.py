@@ -97,6 +97,13 @@ class UserBookInstanceListView(LoginRequiredMixin, generic.ListView):
     def get_queryset(self):
         return BookInstance.objects.filter(reader=self.request.user)
 
+
+class UserBookInstanceDetailView(LoginRequiredMixin, generic.DetailView):
+    model = BookInstance
+    template_name = "user_book.html"
+    context_object_name = "instance"
+
+
 @csrf_protect
 def register(request):
     if request.method == "POST":
