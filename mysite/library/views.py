@@ -94,8 +94,8 @@ class UserBookInstanceListView(LoginRequiredMixin, generic.ListView):
     template_name = 'user_books.html'
     context_object_name = "instances"
 
-    # def get_queryset(self):
-    #     return BookInstance.objects.filter(reader=self.request.user)
+    def get_queryset(self):
+        return BookInstance.objects.filter(reader=self.request.user)
 
 @csrf_protect
 def register(request):
