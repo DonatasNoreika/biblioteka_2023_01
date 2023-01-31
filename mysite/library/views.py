@@ -3,7 +3,7 @@ from .models import Book, BookInstance, Author
 from django.views import generic
 from django.core.paginator import Paginator
 from django.db.models import Q
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.decorators.csrf import csrf_protect
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -115,6 +115,20 @@ class UserBookInstanceCreateView(LoginRequiredMixin, generic.CreateView):
         form.save()
         return super().form_valid(form)
 
+class UserBookInstanceUpdateView(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
+    model = BookInstance
+    fields = ['book', 'due_back', 'status']
+    success_url = "/library/userbooks/"
+    template_name = "user_bookinstance_form.html"
+
+    def test_func(self):
+        bookinstance = self.get_object()
+        return bookinstance.reader == self.request.user
+
+    def form_valid(self, form):
+        form.instance.reader = self.request.user
+        form.save()
+        return super().form_valid(form)
 
 @csrf_protect
 def register(request):

@@ -14,6 +14,11 @@
     <ul>
         <li><strong class="{% if instance.is_overdue %}text-danger{% endif %}">Pavadinimas: {{instance.book.title}}</strong></li>
         <li><strong>Gražinimo terminas:</strong> {{instance.due_back}}</li>
+        {% if instance.reader == user %}
+        <div>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'user_bookinstance_update' instance.id %}">Redaguoti</a>
+        </div>
+        {% endif %}
         <br/>
       </li>
     </ul>
