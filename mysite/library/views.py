@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 from django.views.generic.edit import FormMixin
 from .forms import BookReviewForm, UserUpdateForm, ProfilisUpdateForm, UserBookInstanceCreateForm
 from django.contrib.auth.decorators import login_required
+import datetime
 
 
 # Create your views here.
@@ -193,5 +194,15 @@ def profilis(request):
 def paimti(request, inst_id):
     instance = get_object_or_404(BookInstance, pk=inst_id)
     instance.reader = request.user
+    instance.due_back = datetime.date.today() + datetime.timedelta(weeks=1)
+    instance.status = 'p'
+    instance.save()
+    return redirect('user_books')
+
+def grazinti(request, inst_id):
+    instance = get_object_or_404(BookInstance, pk=inst_id)
+    instance.reader = None
+    instance.due_back = None
+    instance.status = 'g'
     instance.save()
     return redirect('user_books')
