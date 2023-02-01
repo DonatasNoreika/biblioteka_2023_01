@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 
 {% block title %}HOME{% endblock %}
-
 {% block content %}
-<h1>Sveiki atvykę į knygų rojų!</h1>
-<p>Šiuo metu turime:</p>
+{% load i18n %}
+<h1>{% trans "Welcome to my Library" %}</h1>
+<p>{% trans "Today we have:" %}</p>
 {# Mano komentaras #}
 <ul>
-    <li><b>Knygų:</b> {{ num_books }}</li>
-    <li><b>Egzempliorių:</b> {{ num_instances }}</li>
-    <li><b>Laisvų:</b> {{ num_instances_available }}</li>
-    <li><b>Autorių:</b> {{ num_authors }}</li>
+    <li><b>{% trans "Books" %}:</b> {{ num_books }}</li>
+    <li><b>{% trans "Book Instances" %}:</b> {{ num_instances }}</li>
+    <li><b>{% trans "Now Available" %}:</b> {{ num_instances_available }}</li>
+    <li><b>{% trans "Authors" %}:</b> {{ num_authors }}</li>
 </ul>
-<p>Čia jūs lankotes {{ num_visits }}-ą kartą.</p>
+<p>{% trans "Your visits:" %} {{ num_visits }}.</p>
 {% endblock %}
